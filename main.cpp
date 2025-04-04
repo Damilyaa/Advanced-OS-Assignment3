@@ -34,6 +34,7 @@ int main() {
     
     if (hThread2 == NULL) {
         cerr << "Error creating Thread 2" << endl;
+        CloseHandle(hThread1);
         return 1;
     }
 
