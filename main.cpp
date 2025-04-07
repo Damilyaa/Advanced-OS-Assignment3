@@ -5,7 +5,7 @@ using namespace std;
 
 DWORD WINAPI ThreadFunction1(LPVOID lpParam) {
     for (int i = 0; i < 5; i++) {
-        cout << "Thread 1 count is" << i << endl;
+        cout << "Thread 1 count " << i << endl;
         Sleep(100);
     }
     return 0;
@@ -13,7 +13,7 @@ DWORD WINAPI ThreadFunction1(LPVOID lpParam) {
 
 DWORD WINAPI ThreadFunction2(LPVOID lpParam) {
     for (int i = 0; i < 5; i++) {
-        cout << "Thread 2 count" << i << endl;
+        cout << "Thread 2 count " << i << endl;
         Sleep(150);
     }
     return 0;
@@ -23,7 +23,7 @@ int main() {
     HANDLE hThread1, hThread2;
     DWORD dwThreadId1, dwThreadId2;
 
-    hThread1 = CreateThread(NULL, 0, ThreadFunction1, NULL, 0 &dwThreadId1);
+    hThread1 = CreateThread(NULL, 0, ThreadFunction1, NULL, 0, &dwThreadId1);
 
     if (hThread1 == NULL) {
         cerr << "Error creating Thread1:" << GetLastError() << endl;
@@ -34,7 +34,6 @@ int main() {
     
     if (hThread2 == NULL) {
         cerr << "Error creating Thread 2" << endl;
-        CloseHandle(hThread1);
         return 1;
     }
 
